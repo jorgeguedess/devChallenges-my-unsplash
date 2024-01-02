@@ -11,7 +11,7 @@ import { usePhoto } from "@/context/contextImage";
 
 export const UploadPhoto = () => {
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
-    const { startUpload, progress } = useStorage();
+    const { startUpload } = useStorage("images");
     const {legend, setLegend} = usePhoto();
 
     const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {

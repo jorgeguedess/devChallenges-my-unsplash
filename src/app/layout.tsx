@@ -36,7 +36,7 @@ export default function RootLayout({
       >
         <PhotoProvider>
           <Header />
-          <div className="container flex-1">{children}</div>
+          <div className="container flex-1 flex flex-col">{children}</div>
           <Footer />
         </PhotoProvider>
       </body>
