@@ -22,13 +22,15 @@ export const Header = () => {
     setSearchTerm(event.target.value);
   };
 
-  const {searchTerm, setSearchTerm, setSearchResults} = usePhoto();
+  const { searchTerm, setSearchTerm, setSearchResults } = usePhoto();
 
   const memoizedSearchResults = useMemo(() => {
     const lowerCaseSearchTerm = searchTerm.toLowerCase();
-    return images.filter((image) =>
-      image.photoName.toLowerCase().includes(lowerCaseSearchTerm)
-    );
+    return searchTerm.length
+      ? images.filter((image) =>
+        image.name.toLowerCase().includes(lowerCaseSearchTerm)
+      )
+      : images;
   }, [images, searchTerm]);
 
   useEffect(() => {
@@ -57,7 +59,7 @@ export const Header = () => {
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[39rem] w-[90%] mx-auto">
-          <UploadPhoto/>
+          <UploadPhoto />
         </DialogContent>
       </Dialog>
     </header>

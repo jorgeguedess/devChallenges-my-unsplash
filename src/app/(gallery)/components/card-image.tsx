@@ -6,27 +6,33 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { ImageDataProps } from "@/types/image";
+import useStorage from "@/hooks/useStorage";
 
-export const CardImage = ({imageUrl, photoName}: ImageDataProps) => {
+interface CardImageProps {
+  imageData: ImageDataProps;
+}
+
+export const CardImage = ({imageData}: CardImageProps) => {
   const [isHovered, setHovered] = useState(false);
+  const { deleteImage } = useStorage("images");
 
   const handleFormDelete = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log('arquivo deletado');
+    deleteImage(imageData)
   }
 
   return (
     <div
-      className="w-full relative h-full"
+      className="w-full relative h-full max-h-[16rem]"
       onMouseOver={() => setHovered(true)}
       onMouseOut={() => setHovered(false)}
     >
       <figure
-        className="h-full w-full max-h-[16rem]"
-        id={imageUrl}
+        className="h-full w-full"
+        id={imageData.url}
       >
         <Image
-          src={imageUrl}
+          src={imageData.url}
           alt="on image"
           sizes="100vw"
           width={0}
@@ -57,7 +63,7 @@ export const CardImage = ({imageUrl, photoName}: ImageDataProps) => {
           </DialogContent>
         </Dialog>
 
-        <p className="font-secondary text-lg font-bold text-white max-w-[17.5rem]">{photoName}</p>
+        <p className="font-secondary text-lg font-bold text-white max-w-[17.5rem]">{imageData.name}</p>
       </div>
     </div>
   );

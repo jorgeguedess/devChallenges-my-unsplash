@@ -1,6 +1,6 @@
 export type ImageDataProps = {
   id: string;
   createdAt: Date;
-  imageUrl: string;
-  photoName: string;
+  url: string;
+  name: string;
 };
