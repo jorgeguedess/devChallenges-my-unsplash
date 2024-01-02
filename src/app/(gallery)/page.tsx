@@ -16,7 +16,7 @@ export default function GalleryPage() {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 w-full gap-4 flex-1">
+    <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 w-full gap-4 auto-rows-max flex-1">
       {!isLoading && searchResults && searchResults?.length ? (
         searchResults.map((image) => (
           <CardImage imageData={image} key={image.url} />
