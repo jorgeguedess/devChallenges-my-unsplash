@@ -23,7 +23,7 @@ export const CardImage = ({imageData}: CardImageProps) => {
 
   return (
     <div
-      className="w-full relative h-full max-h-[16rem]"
+      className="w-full relative h-[15rem]"
       onMouseOver={() => setHovered(true)}
       onMouseOut={() => setHovered(false)}
     >
