@@ -13,6 +13,7 @@ import {
 import { addDoc, collection, doc, deleteDoc } from "firebase/firestore";
 
 import { ImageDataProps } from "@/types/image";
+import toast from "react-hot-toast";
 
 const useStorage = (collectionName: string) => {
   const [progress, setProgress] = useState<number>(0);
@@ -59,7 +60,9 @@ const useStorage = (collectionName: string) => {
           });
         }
       );
+      toast.success("image sent successfully!");
     } catch (error) {
+      toast.error("Oops! There was a problem sending the image");
       console.error(error);
     }
   };
@@ -82,9 +85,12 @@ const useStorage = (collectionName: string) => {
       const docRef = doc(db, collectionName, image.id);
       await deleteDoc(docRef);
 
+      toast.success("image delete success!");
       return { success: "image delete success" };
+
     } catch (error) {
       console.error(error);
+      toast.error("image delete fail");
       return { error: "image delete fail" };
     }
   };

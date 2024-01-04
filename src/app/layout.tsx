@@ -5,6 +5,9 @@ import { Header } from "@/components/header";
 import Footer from "@/components/footer";
 import { PhotoProvider } from "@/context/contextImage";
 
+import { Toaster } from "react-hot-toast";
+
+
 const notoSans = Noto_Sans({
   weight: ["400", "500", "700"],
   style: ["normal"],
@@ -36,6 +39,7 @@ export default function RootLayout({
       >
         <PhotoProvider>
           <Header />
+          <Toaster position="top-right" />
           <div className="container flex-1 flex flex-col">{children}</div>
           <Footer />
         </PhotoProvider>
