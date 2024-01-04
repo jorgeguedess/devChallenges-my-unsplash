@@ -33,7 +33,7 @@ export const CardImage = ({imageData}: CardImageProps) => {
       >
         <Image
           src={imageData.url}
-          alt="on image"
+          alt={imageData.name}
           sizes="100vw"
           width={0}
           height={0}
